@@ -4,6 +4,39 @@ WheelScan is a Flutter mobile app that lets anyone scan public spaces (ramps, do
 
 ---
 
+![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?logo=streamlit&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-F7931E?logo=scikit-learn&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-2.0+-006600)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
+
+🌐 **Live Demo:** [student-burnout-ai.streamlit.app](https://student-burnout-prediction-ai.streamlit.app/)
+
+--- 
+
+## 📸 Screenshots
+
+### Dashboard
+![Hero](Screenshots/img1.png)
+
+### Input Section
+![Input](Screenshots/img2.png)
+
+### Map
+![Map](Screenshots/img3.png)
+
+### Community Feed
+![Community Feed](Screenshots/img4.png)
+
+### Profile
+![Profile](Screenshots/img5.png)
+
+### FAQ  
+![FAQ](Screenshots/img6.png)
+
+---
 ## 🎯 Problem Solved
 
 WheelScan solves a real-world accessibility gap:
