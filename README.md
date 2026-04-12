@@ -1,4 +1,4 @@
-# 🚀 WheelScan - AI-Powered Accessibility Auditor for Public Spaces**
+# 🚀 WheelScan - AI-Powered Accessibility Auditor for Public Spaces
 
 WheelScan is a Flutter mobile app that lets anyone scan public spaces (ramps, doorways, elevators, parking lots, staircases, roads, and more) and get instant accessibility scores with detailed breakdowns and recommendations.
 
