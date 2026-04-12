@@ -2,8 +2,6 @@
 
 WheelScan is a Flutter mobile app that lets anyone scan public spaces (ramps, doorways, elevators, parking lots, staircases, roads, and more) and get instant accessibility scores with detailed breakdowns and recommendations.
 
-Built as a semester project for **Flutter for Android Application Development** — B.Tech CSE (AI/ML), 4th Semester, Sharda University.
-
 ---
 
 ## 🎯 Problem Solved
