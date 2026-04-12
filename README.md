@@ -16,7 +16,7 @@ Users often face unexpected barriers
 
 👉 WheelScan makes accessibility instant, scalable, and community-driven 
 
--- 
+---
 
 ## 📌 What It Does/Key Features
 
