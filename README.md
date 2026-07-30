@@ -12,8 +12,9 @@ WheelScan is a Flutter mobile app that lets anyone scan public spaces (ramps, do
 ![License](https://img.shields.io/badge/License-Educational-blue)
 
 ---
-
 🔗 **Live Demo :** [wheelscan-app-d6180.web.app](https://wheelscan-app-d6180.web.app)
+
+![Logo](Screenshots/homepage.png)
 
 --- 
 
