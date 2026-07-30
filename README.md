@@ -1,6 +1,8 @@
 # 🚀 WheelScan - AI-Powered Accessibility Auditor for Public Spaces
 
-WheelScan is a Flutter mobile app that lets anyone scan public spaces (ramps, doorways, elevators, parking lots, staircases, roads, and more) and get instant accessibility scores with detailed breakdowns and recommendations.
+WheelScan is a Flutter mobile app that lets anyone scan public spaces (ramps, doorways, elevators, parking lots, staircases, roads, and more) and get instant accessibility scores out of 100 with detailed pass/warning/critical breakdown & recommendations **and now a prioritized, AI-generated action plan telling you exactly what to fix, why it matters, and how to verify the fix.**
+
+> **Score without guidance is just a number. WheelScan turns it into a plan.**
 
 ![Flutter](https://img.shields.io/badge/Flutter-3.38-02569B?logo=flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-3.10-0175C2?logo=dart&logoColor=white)
@@ -11,7 +13,9 @@ WheelScan is a Flutter mobile app that lets anyone scan public spaces (ramps, do
 
 ---
 
-🔗 **Live Demo:** [wheelscan-app-d6180.web.app](https://wheelscan-app-d6180.web.app)
+🔗 **Live Demo :** [wheelscan-app-d6180.web.app](https://wheelscan-app-d6180.web.app)
+🔗 **Demo video :** [add link once recorded]
+🔗 **Project Description doc :** [Project Description](https://docs.google.com/document/d/1p6nU_qT-5uHVekM_Dzo9nED4xrYCIY92Wtrc1w2t0zg/edit?usp=sharing)
 
 --- 
 
@@ -40,24 +44,36 @@ WheelScan is a Flutter mobile app that lets anyone scan public spaces (ramps, do
 
 ## 🎯 Problem Solved
 
-WheelScan solves a real-world accessibility gap:
+👉 WheelScan makes accessibility instant, scalable, and community-driven & solves a real-world accessibility gap :
 
-No easy way to check accessibility before visiting a place
-Manual audits are expensive & rare
-Users often face unexpected barriers
+- There's no easy way to check if a place is accessible before visiting it. 
+- Manual accessibility audits are expensive and rare, so people with disabilities often discover barriers only after they've arrived — a staircase with no ramp, a doorway too narrow for a wheelchair, missing handrails or tactile warnings.
 
-👉 WheelScan makes accessibility instant, scalable, and community-driven 
+WheelScan already let anyone score a space instantly from a photo. But a raw score doesn't tell you *what's* wrong or *how* to fix it — until now.
 
 ---
 
 ## 📌 What It Does/Key Features
 
-- **📸 Scan Any Space** — Take a photo or upload from gallery
-- **🧠 Smart Analysis** — Select from 5 preset categories or describe the space in your own words (supports 12+ space types)
-- **📊 Detailed Scoring** — Get a score out of 100 with PASS / WARNING / CRITICAL breakdown for each criterion
-- **🗺️ Accessibility Map** — View all audited locations on an interactive map with color-coded pins
-- **👥 Community Feed** — See audits from other users with likes, comments, and shares
-- **🏆 Profile and Badges** — Track your audits, earn badges, maintain streaks, and customize settings
+**1. 📸 Scan any space** - Take a photo or upload from gallery. Choose a preset category (Ramp, Doorway, Elevator, Parking, Staircase) or describe the space in your own words — 12+ space types supported.
+
+**2. 🧠 Get an instant score** - A rule-based scoring engine rates each accessibility criterion GOOD / WARNING / CRITICAL and produces a score out of 100.
+
+**3. 📊 Get an AI Action Plan** -  For every flagged issue, an AI agent generates:
+- **Why it matters** — plain-language explanation of the real-world impact
+- **Recommended fix** — specific, standards-based advice (not generic)
+- **Standard reference** — the accessibility guideline behind the recommendation
+- **Priority rank** — which fix matters most for independent access
+- **Impact label** — e.g. `High access impact` / `High safety impact`
+- **Effort label** — e.g. `High effort` / `Medium effort`
+- **Cost tag** — e.g. `Low cost — DIY` / `Medium — needs contractor` / `High — structural change`
+- **Confidence flag** — `High confidence` vs `Verify on-site`, so the agent never overstates certainty
+- **How to verify** — the exact post-fix check to confirm the issue is resolved
+- **Agent self-check** — a visible note confirming the recommendation was reviewed for actionability before being shown (e.g. *"Draft generated from CRITICAL criterion and checked for actionability"*)
+
+**4. 🏆  Copy a shareable report** - One tap copies the full action plan as clean, readable text — ready to paste into WhatsApp, email, or a maintenance request.
+
+**5. 👥 Explore the community Feed & Accessibility Map** - View all audited locations on an interactive map, browse a community feed of other users' audits, and track your own audit history with badges and streaks.
 
 ---
 
@@ -67,10 +83,24 @@ Users often face unexpected barriers
 |---|---|
 | Flutter 3.38 | Cross-platform UI framework |
 | Dart 3.10 | Programming language |
+| OpenAI Codex | Agentic build partner — planning, generation, self-review of the Recommendation Agent |
 | image_picker | Camera and gallery access |
 | CustomPainter | Score ring animation and map |
-| AnimationController | Splash, score, and card animations |
+| AnimationController | Splash, score, card, and agent-reasoning-trace animations |
 | Material Design 3 | UI components and theming |
+
+---
+
+## 🧠 How Codex Was Used
+
+This project was built primarily with **OpenAI Codex**, used as a genuine agentic collaborator, not autocomplete :
+
+1. **Planned** the AI Action Plan feature — data structure, UI flow, and agent prompt design — before writing code
+2. **Generated** the recommendation agent logic, connecting it to the existing scoring engine's output without modifying the scorer itself
+3. **Self-reviewed** its own output at each stage — flagging vague recommendations for rewrite, and adding the visible "agent self-check" line so the reasoning process is transparent to the end user, not just the final result
+4. **Iterated** across multiple rounds — first shipping the core AI Action Plan, then a second pass adding impact/effort/cost/confidence tags and the visible reasoning trace, based on direct feedback
+
+We treated Codex's own review workflow as our own quality bar: failing-test-first logic, read-only review passes, and demanding evidence (file:line, standard reference) before accepting any generated recommendation as final.
 
 ---
 
@@ -82,21 +112,21 @@ lib/
 ├── config/
 │   └── theme.dart               # Colors, gradients, text styles
 ├── models/
-│   └── audit_model.dart         # AuditResult and AuditIssue classes
+│   └── audit_model.dart         # AuditResult, AuditIssue, and Recommendation classes
 ├── screens/
 │   ├── splash_screen.dart       # Animated intro screen
 │   ├── home_screen.dart         # Dashboard with stats and quick scan
 │   ├── scan_screen.dart         # Image capture and space type selector
-│   ├── result_screen.dart       # Animated score ring and breakdown
+│   ├── result_screen.dart       # Score ring, breakdown, and AI Action Plan
 │   ├── map_screen.dart          # Interactive accessibility map
 │   ├── feed_screen.dart         # Community audit feed
 │   └── profile_screen.dart      # User profile, badges, settings
 ├── services/
-│   └── scoring_service.dart     # AI scoring engine (12+ categories)
+│   ├── scoring_service.dart     # Rule-based scoring engine (12+ categories) — unchanged
+│   └── recommendation_agent.dart # AI Action Plan generation — plan, draft, self-check
 └── widgets/
     └── score_gauge.dart         # Reusable score display widget
 ```
-
 ---
 
 ## ⭐ AI Scoring Engine
@@ -124,6 +154,14 @@ Each category has specific accessibility criteria. Every criterion is rated:
 4. Run flutter pub get to install dependencies
 5. Run flutter run to start the app
 
+```bash
+flutter doctor          # confirm Flutter is installed correctly
+git clone <this-repo>
+cd WheelScan
+flutter pub get
+flutter run -d chrome   # or your preferred device
+```
+
 ---
 
 ##  📊 Flutter Concepts Used
@@ -134,12 +172,12 @@ StatefulWidget and StatelessWidget, setState for reactive UI, Navigator push and
 
 ## 🔮 Future Scope
 
-- Real AI Model — Train MobileNetV2 with TFLite for actual image classification
-- Firebase Backend — Authentication, Firestore database, cloud storage
-- Google Maps SDK — Real map with GPS locations
-- PDF Report Export — Professional audit reports
-- Voice Input — Describe spaces using speech-to-text
-- Multi-Language — Hindi, Spanish, French, Arabic support
+- **Real computer vision** — train a MobileNetV2/TFLite model for actual image-based issue detection (the current AI Action Plan works from the existing rule-based scoring output, not live image understanding — stated here transparently)
+- Firebase backend — authentication, Firestore, cloud storage
+- Google Maps SDK — real GPS-based map
+- PDF export of the full audit + action plan
+- Voice input and multi-language support (Hindi, Spanish, French, Arabic)
+- Aggregate insight across community audits (e.g. "most common critical issue in this area")
 
 ---
 

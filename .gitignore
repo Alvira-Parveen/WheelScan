@@ -1,0 +1,33 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.project
+.idea/
+*.iml
+.vscode/
+
+# Flutter/Dart-related
+**/doc/api/
+**/ios/Flutter/.flutter-plugins-dependencies
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Local SDK copy
+/flutter_sdk/
+
+# Artifacts
+/app-debug.apk
+/app-debug.aab
+/app-release.apk
+/app-release.aab
