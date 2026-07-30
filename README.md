@@ -14,8 +14,6 @@ WheelScan is a Flutter mobile app that lets anyone scan public spaces (ramps, do
 ---
 
 🔗 **Live Demo :** [wheelscan-app-d6180.web.app](https://wheelscan-app-d6180.web.app)
-🔗 **Demo video :** [add link once recorded]
-🔗 **Project Description doc :** [Project Description](https://docs.google.com/document/d/1p6nU_qT-5uHVekM_Dzo9nED4xrYCIY92Wtrc1w2t0zg/edit?usp=sharing)
 
 --- 
 
@@ -104,6 +102,12 @@ We treated Codex's own review workflow as our own quality bar: failing-test-firs
 
 ---
 
+##  🎯 System Architecture 
+
+![System Architecture ](Architecture.png)
+
+---
+
 ## 📂 Project Structure
 
 ```
@@ -166,7 +170,17 @@ flutter run -d chrome   # or your preferred device
 
 ##  📊 Flutter Concepts Used
 
-StatefulWidget and StatelessWidget, setState for reactive UI, Navigator push and pop, async/await, CustomPainter for canvas drawing, AnimationController with CurvedAnimation, BottomSheet and AlertDialog, GestureDetector, SingleChildScrollView, ListView.builder, and image_picker package.
+- StatefulWidget and StatelessWidget
+- setState for reactive UI
+- Navigator push and pop
+- async/await
+- CustomPainter for canvas drawing
+- AnimationController with CurvedAnimation
+- BottomSheet and AlertDialog
+- GestureDetector
+- SingleChildScrollView
+- ListView.builder
+- image_picker package
 
 ---
 
